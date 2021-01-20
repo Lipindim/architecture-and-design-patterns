@@ -1,1 +1,1 @@
-# architecture-and-design-patterns
+Курс GeekBrains "Архитектура и шаблоны проектирования"
