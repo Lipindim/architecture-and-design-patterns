@@ -3,12 +3,12 @@
 
 namespace Asteroids
 {
-    internal class ShotSettings
+    [CreateAssetMenu(fileName = "ShotSettings", menuName = "Data/ShotSettings")]
+    internal class ShotSettings : ScriptableObject
     {
         public float Force;
-        public Rigidbody2D Bullet;
+        public GameObject Bullet;
         public GameObject Barrel;
         public Vector2 BarrelPositon;
-        public float BarrelPositionY;
     }
 }

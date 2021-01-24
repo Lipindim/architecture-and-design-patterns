@@ -9,16 +9,31 @@ namespace Asteroids
 
         [SerializeField] private PlayerSettings _playerSettings;
         [SerializeField] private ShotSettings _shotSettings;
+        [SerializeField] private AsteroidSettings _asteroidSettings;
+        [SerializeField] private FighterSettings _fighterSettings;
 
         private List<IUpdateble> _updatebles;
 
         private void Start()
         {
-            var player = PlayerInitializer.Initialize(_playerSettings);
-            MoveController moveController = MoveControllerInitializer.Initialize(player.transform, _playerSettings, Camera.main);
-            ShotController shotController = ShotControllerInitializer.Initialize(_shotSettings, player.transform);
+            var poolServices = new PoolServices();
+            var playerFactory = new PlayerShipFactory(_playerSettings, _shotSettings, poolServices);
+            var playerShip = playerFactory.CreateShip();
+
+            MoveController moveController = new MoveController(playerShip, playerShip, Camera.main);
+            ShotController shotController = new ShotController(playerShip, Camera.main, poolServices);
+
+            var asteroidFactory = new AsteroidFactory(_asteroidSettings, poolServices);
+            AsteroidsController asteroidsController = new AsteroidsController(_asteroidSettings, asteroidFactory, poolServices);
+            var fighterFactory = new FighterFactory(_fighterSettings, poolServices);
+            FightersController fightersController = new FightersController(_fighterSettings, fighterFactory, poolServices, playerShip);
+
+            _updatebles = new List<IUpdateble>();
             _updatebles.Add(moveController);
             _updatebles.Add(shotController);
+            _updatebles.Add(asteroidsController);
+            _updatebles.Add(fightersController);
+            //_updatebles.Add(shotController);
 
         }
 

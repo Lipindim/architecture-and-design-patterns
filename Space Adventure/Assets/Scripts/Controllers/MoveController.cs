@@ -4,32 +4,31 @@ namespace Asteroids
 {
     internal class MoveController : IUpdateble
     {
-        private readonly Ship _playerShip;
+        private readonly IMove _move;
+        private readonly IRotation _rotation;
         private readonly Camera _camera;
-        private readonly Transform _transform;
 
-        internal MoveController(Ship playerShip, Camera camera, Transform transform)
+        internal MoveController( IMove move, IRotation rotation, Camera camera)
         {
-            _playerShip = playerShip;
+            _move = move;
+            _rotation = rotation;
             _camera = camera;
-            _transform = transform;
         }
         public void Update(float deltaTime)
         {
-            var direction = Input.mousePosition - _camera.WorldToScreenPoint(_transform.position);
-            _playerShip.Rotation(direction);
+            var direction = Input.mousePosition - _camera.WorldToScreenPoint(_move.CurrentPosition);
+            _rotation.Rotation(direction);
+            _move.Move(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), deltaTime);
 
-            _playerShip.Move(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), deltaTime);
+            //if (Input.GetKeyDown(KeyCode.LeftShift))
+            //{
+            //    _playerShip.AddAcceleration();
+            //}
 
-            if (Input.GetKeyDown(KeyCode.LeftShift))
-            {
-                _playerShip.AddAcceleration();
-            }
-
-            if (Input.GetKeyUp(KeyCode.LeftShift))
-            {
-                _playerShip.RemoveAcceleration();
-            }
+            //if (Input.GetKeyUp(KeyCode.LeftShift))
+            //{
+            //    _playerShip.RemoveAcceleration();
+            //}
         }
     }
 }

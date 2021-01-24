@@ -8,7 +8,9 @@ namespace Asteroids
         private Vector3 _move;
 
         public float Speed { get; protected set; }
-        
+
+        public Vector3 CurrentPosition => _transform.position;
+
         public MoveTransform(Transform transform, float speed)
         {
             _transform = transform;

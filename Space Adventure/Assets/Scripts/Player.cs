@@ -18,7 +18,7 @@ namespace Asteroids
             _camera = Camera.main;
             var moveTransform = new AccelerationMove(transform, _speed, _acceleration);
             var rotation = new RotationShip(transform);
-            _ship = new Ship(moveTransform, rotation);
+            _ship = new Ship(moveTransform, rotation, null, null);
         }
 
         private void Update()
