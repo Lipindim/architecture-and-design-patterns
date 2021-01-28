@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e26f541bb2599f549ba98f44d2e68b58, type: 3}
+  m_Script: {fileID: 11500000, guid: ddc7b0207271038419bc839aee6676a6, type: 3}
   m_Name: FighterSettings
   m_EditorClassIdentifier: 
   Prefab: {fileID: 7694152030808640175, guid: 201ca208efc4b1843abbbe5dda43d9f5, type: 3}

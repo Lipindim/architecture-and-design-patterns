@@ -6,10 +6,10 @@ namespace Asteroids
 {
     internal class AsteroidFactory : IEnemyFactory
     {
-        private readonly AsteroidSettings _asteroidSettings;
+        private readonly EnemySettings _asteroidSettings;
         private readonly PoolServices _poolServices;
 
-        internal AsteroidFactory(AsteroidSettings asteroidSettings, PoolServices poolServices)
+        internal AsteroidFactory(EnemySettings asteroidSettings, PoolServices poolServices)
         {
             _asteroidSettings = asteroidSettings;
             _poolServices = poolServices;

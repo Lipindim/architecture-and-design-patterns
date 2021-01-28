@@ -152,8 +152,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerSettings: {fileID: 11400000, guid: ce8a42ef43dd33348b32277863920b6d, type: 2}
   _shotSettings: {fileID: 11400000, guid: cc56febf2a54d454bb0355d7d740ea86, type: 2}
-  _asteroidSettings: {fileID: 11400000, guid: 1166fdf77e38587469296f6199eb6a2d, type: 2}
-  _fighterSettings: {fileID: 11400000, guid: 9652af09f1ec61b41bc5e5262cf4947f, type: 2}
+  _asteroidSettings: {fileID: 11400000, guid: 55860e23b92bfbb40af992c8faaeeefb, type: 2}
+  _fighterSettings: {fileID: 11400000, guid: f35348f66cd5a72469121fa773f16e0d, type: 2}
 --- !u!4 &141020503
 Transform:
   m_ObjectHideFlags: 0

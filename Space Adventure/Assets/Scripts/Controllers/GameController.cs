@@ -9,8 +9,8 @@ namespace Asteroids
 
         [SerializeField] private PlayerSettings _playerSettings;
         [SerializeField] private ShotSettings _shotSettings;
-        [SerializeField] private AsteroidSettings _asteroidSettings;
-        [SerializeField] private FighterSettings _fighterSettings;
+        [SerializeField] private EnemySettings _asteroidSettings;
+        [SerializeField] private EnemySettings _fighterSettings;
 
         private List<IUpdateble> _updatebles;
 
@@ -18,22 +18,25 @@ namespace Asteroids
         {
             var poolServices = new PoolServices();
             var playerFactory = new PlayerShipFactory(_playerSettings, _shotSettings, poolServices);
-            var playerShip = playerFactory.CreateShip();
+            Ship playerShip = playerFactory.CreateShip();
+            IScreen screen = new Screen(Camera.main);
 
-            MoveController moveController = new MoveController(playerShip, playerShip, Camera.main);
-            ShotController shotController = new ShotController(playerShip, Camera.main, poolServices);
+            MoveController moveController = new MoveController(playerShip, playerShip, screen);
+            ShotController shotController = new ShotController(playerShip, screen, poolServices);
 
             var asteroidFactory = new AsteroidFactory(_asteroidSettings, poolServices);
-            AsteroidsController asteroidsController = new AsteroidsController(_asteroidSettings, asteroidFactory, poolServices);
+            var asteroidSpawner = new EnemySpawner(_asteroidSettings, asteroidFactory);
+            AsteroidsController asteroidsController = new AsteroidsController(_asteroidSettings, asteroidSpawner, poolServices, screen);
+
             var fighterFactory = new FighterFactory(_fighterSettings, poolServices);
-            FightersController fightersController = new FightersController(_fighterSettings, fighterFactory, poolServices, playerShip);
+            var fighterSpawner = new EnemySpawner(_fighterSettings, fighterFactory);
+            FightersController fightersController = new FightersController(_fighterSettings, fighterSpawner, poolServices, playerShip, screen);
 
             _updatebles = new List<IUpdateble>();
             _updatebles.Add(moveController);
             _updatebles.Add(shotController);
             _updatebles.Add(asteroidsController);
             _updatebles.Add(fightersController);
-            //_updatebles.Add(shotController);
 
         }
 
