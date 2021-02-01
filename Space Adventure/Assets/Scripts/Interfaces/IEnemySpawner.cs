@@ -7,5 +7,6 @@ namespace Asteroids
     {
         Enemy SpawnEnemyInRandomPosition();
         Enemy SpawnEnemyInPosition(Vector3 position);
+        bool IsReadyToSpawn();
     }
 }

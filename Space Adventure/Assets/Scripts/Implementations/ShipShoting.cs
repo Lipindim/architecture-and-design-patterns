@@ -19,14 +19,15 @@ namespace Asteroids
             _force = force;
         }
 
-        public GameObject Shot()
+        public bool TryShot(out GameObject bullet)
         {
-            var bullet = _poolServices.Create(_bullet);
+            bullet = _poolServices.Create(_bullet);
             bullet.transform.position = _barrel.position;
             bullet.transform.rotation = _barrel.rotation;
             var bulletRigidBody = bullet.GetComponent<Rigidbody2D>();
             bulletRigidBody.AddForce(_barrel.right * _force);
-            return bullet;
+            
+            return true;
         }
     }
 }
