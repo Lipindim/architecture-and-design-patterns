@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62270ad6b240b1f4b8aebe89f361d32f, type: 3}
+  m_Script: {fileID: 11500000, guid: ddc7b0207271038419bc839aee6676a6, type: 3}
   m_Name: AsteroidSettings
   m_EditorClassIdentifier: 
   Prefab: {fileID: 4330506354081004072, guid: 411243defd6eb4341937dcbeaca6e6b6, type: 3}

@@ -6,40 +6,33 @@ namespace Asteroids
 {
     internal class FightersController : IUpdateble
     {
-        private readonly FighterSettings _fighterSettings;
-        private readonly PoolServices _poolServices;
-        private readonly IEnemyFactory _fighterFactory;
+        private readonly IScreen _screen;
+        private readonly IEnemySpawner _enemySpawner;
         private readonly IMove _playerMove;
-        private List<Enemy> _fighters;
+        private readonly UnityTimer _timer;
+        private readonly PoolServices _poolServices;
+        private readonly List<Enemy> _fighters;
 
-        private float _timeUntilNextSpawn;
-
-        internal FightersController(FighterSettings fighterSettings, IEnemyFactory fighterFactory, PoolServices poolServices, IMove playerMove)
+        internal FightersController(EnemySettings fighterSettings, IEnemySpawner enemySpawner, PoolServices poolServices, IMove playerMove, IScreen screen)
         {
-            _fighterSettings = fighterSettings;
+            _screen = screen;
             _poolServices = poolServices;
-            _fighterFactory = fighterFactory;
+            _enemySpawner = enemySpawner;
             _playerMove = playerMove;
 
             _fighters = new List<Enemy>();
+            _timer = new UnityTimer(fighterSettings.SpawnIntervalTime, 0);
         }
 
         private void Spawn(float deltaTime)
         {
-            _timeUntilNextSpawn -= deltaTime;
-            if (_timeUntilNextSpawn <= 0)
+            _timer.Tick(deltaTime);
+            if (_timer.IsTimeUp)
             {
-                var asteroid = _fighterFactory.Create();
-                _fighters.Add(asteroid);
-                _timeUntilNextSpawn = _fighterSettings.SpawnIntervalTime;
-                asteroid.GameObject.transform.position = GetNewPosition();
+                var fighter = _enemySpawner.SpawnEnemyInRandomPosition();
+                _fighters.Add(fighter);
+                _timer.Reset();
             }
-        }
-
-        private Vector3 GetNewPosition()
-        {
-            float x = Random.Range(_fighterSettings.SpawnStartPoisitionX, _fighterSettings.SpawnEntPositionX);
-            return new Vector3(x, _fighterSettings.SpawnPositionY);
         }
 
         public void Update(float deltaTime)
@@ -55,7 +48,7 @@ namespace Asteroids
                 Vector3 directionToRotate = _playerMove.CurrentPosition - move.CurrentPosition;
                 rotation.Rotation(directionToRotate);
 
-                if (move.CurrentPosition.y < 0)
+                if (_screen.IsPositionOutOfScreen(move.CurrentPosition))
                 {
                     _poolServices.Destroy(_fighters[i].GameObject);
                     _fighters.RemoveAt(i);

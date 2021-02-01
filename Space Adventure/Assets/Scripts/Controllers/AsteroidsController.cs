@@ -5,38 +5,32 @@ namespace Asteroids
 {
     public class AsteroidsController : IUpdateble
     {
-        private readonly AsteroidSettings _asteroidSettings;
+        private readonly IScreen _screen;
+        private readonly IEnemySpawner _asteroidSpawner;
         private readonly PoolServices _poolServices;
-        private readonly IEnemyFactory _asteroidFactory;
-        private List<Enemy> _asteroids;
+        private readonly UnityTimer _timer;
+        private readonly List<Enemy> _asteroids;
 
-        private float _timeUntilNextSpawn;
 
-        internal AsteroidsController(AsteroidSettings asteroidSettings, IEnemyFactory asteroidFactory, PoolServices poolServices)
+        internal AsteroidsController(EnemySettings asteroidSettings, IEnemySpawner asteroidSpawner, PoolServices poolServices, IScreen screen)
         {
-            _asteroidSettings = asteroidSettings;
+            _screen = screen;
             _poolServices = poolServices;
-            _asteroidFactory = asteroidFactory;
+            _asteroidSpawner = asteroidSpawner;
 
             _asteroids = new List<Enemy>();
+            _timer = new UnityTimer(asteroidSettings.SpawnIntervalTime, 0);
         }
 
         private void Spawn(float deltaTime)
         {
-            _timeUntilNextSpawn -= deltaTime;
-            if (_timeUntilNextSpawn <= 0)
+            _timer.Tick(deltaTime);
+            if (_timer.IsTimeUp)
             {
-                var asteroid = _asteroidFactory.Create();
+                var asteroid = _asteroidSpawner.SpawnEnemyInRandomPosition();
                 _asteroids.Add(asteroid);
-                _timeUntilNextSpawn = _asteroidSettings.SpawnIntervalTime;
-                asteroid.GameObject.transform.position = GetNewPosition();
+                _timer.Reset();
             }
-        }
-
-        private Vector3 GetNewPosition()
-        {
-            float x = Random.Range(_asteroidSettings.SpawnStartPoisitionX, _asteroidSettings.SpawnEntPositionX);
-            return new Vector3(x, _asteroidSettings.SpawnPositionY);
         }
 
         public void Update(float deltaTime)
@@ -48,7 +42,7 @@ namespace Asteroids
                 IMove move = _asteroids[i] as IMove;
                 move.Move(0, 0, deltaTime);
 
-                if (move.CurrentPosition.y < 0)
+                if (_screen.IsPositionOutOfScreen(move.CurrentPosition))
                 {
                     _poolServices.Destroy(_asteroids[i].GameObject);
                     _asteroids.RemoveAt(i);

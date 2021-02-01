@@ -8,14 +8,14 @@ namespace Asteroids
     internal class ShotController : IUpdateble
     {
         private readonly PoolServices _poolServices;
-        private readonly Camera _camera;
+        private readonly IScreen _screen;
         private readonly IShoting _shoting;
         private readonly List<GameObject> _bullets;
 
-        internal ShotController(IShoting shoting, Camera camera, PoolServices poolServices)
+        internal ShotController(IShoting shoting, IScreen screen, PoolServices poolServices)
         {
             _poolServices = poolServices;
-            _camera = camera;
+            _screen = screen;
             _shoting = shoting;
             _bullets = new List<GameObject>();
         }
@@ -34,7 +34,8 @@ namespace Asteroids
         {
             for (int i = 0; i < _bullets.Count; i++)
             {
-                if (IsPositionOutOfScreen(_bullets[i].transform.position))
+                Vector3 bulletPosition = _bullets[i].transform.position;
+                if (_screen.IsPositionOutOfScreen(bulletPosition))
                 {
                     _poolServices.Destroy(_bullets[i]);
                     _bullets.RemoveAt(i);
@@ -43,13 +44,5 @@ namespace Asteroids
             }
         }
 
-        private bool IsPositionOutOfScreen(Vector3 position)
-        {
-            Vector3 point = _camera.WorldToViewportPoint(position);
-            return point.y < 0.0f
-                || point.y > 1.0f
-                || point.x > 1.0f
-                || point.x < 0.0f;
-        }
     }
 }

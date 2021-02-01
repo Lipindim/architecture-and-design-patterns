@@ -2,10 +2,10 @@
 {
     internal class FighterFactory : IEnemyFactory
     {
-        private readonly FighterSettings _fighterSettings;
+        private readonly EnemySettings _fighterSettings;
         private readonly PoolServices _poolServices;
 
-        internal FighterFactory(FighterSettings fighterSettings, PoolServices poolServices)
+        internal FighterFactory(EnemySettings fighterSettings, PoolServices poolServices)
         {
             _fighterSettings = fighterSettings;
             _poolServices = poolServices;

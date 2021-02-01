@@ -6,17 +6,17 @@ namespace Asteroids
     {
         private readonly IMove _move;
         private readonly IRotation _rotation;
-        private readonly Camera _camera;
+        private readonly IScreen _screen;
 
-        internal MoveController( IMove move, IRotation rotation, Camera camera)
+        internal MoveController( IMove move, IRotation rotation, IScreen screen)
         {
             _move = move;
             _rotation = rotation;
-            _camera = camera;
+            _screen = screen;
         }
         public void Update(float deltaTime)
         {
-            var direction = Input.mousePosition - _camera.WorldToScreenPoint(_move.CurrentPosition);
+            var direction = Input.mousePosition - _screen.WorldToScreenPoint(_move.CurrentPosition);
             _rotation.Rotation(direction);
             _move.Move(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), deltaTime);
 
