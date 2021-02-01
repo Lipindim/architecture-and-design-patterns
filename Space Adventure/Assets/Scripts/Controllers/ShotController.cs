@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -24,7 +23,8 @@ namespace Asteroids
         {
             if (Input.GetButtonDown("Fire1"))
             {
-                _bullets.Add(_shoting.Shot());
+                if (_shoting.TryShot(out GameObject bullet))
+                    _bullets.Add(bullet);
             }
 
             RemoveBulletsOutOfScreen();

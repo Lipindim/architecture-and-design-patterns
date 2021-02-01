@@ -7,6 +7,7 @@ namespace Asteroids
     internal class ShotSettings : ScriptableObject
     {
         public float Force;
+        public float ReloadTimeSec;
         public GameObject Bullet;
         public GameObject Barrel;
         public Vector2 BarrelPositon;

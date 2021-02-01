@@ -154,6 +154,8 @@ MonoBehaviour:
   _shotSettings: {fileID: 11400000, guid: cc56febf2a54d454bb0355d7d740ea86, type: 2}
   _asteroidSettings: {fileID: 11400000, guid: 55860e23b92bfbb40af992c8faaeeefb, type: 2}
   _fighterSettings: {fileID: 11400000, guid: f35348f66cd5a72469121fa773f16e0d, type: 2}
+  _fighterShotSettings: {fileID: 11400000, guid: 9b95aada1b45fd6419432e63b9fb5e70,
+    type: 2}
 --- !u!4 &141020503
 Transform:
   m_ObjectHideFlags: 0
@@ -167,6 +169,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &330290631
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 330290633}
+  - component: {fileID: 330290632}
+  m_Layer: 0
+  m_Name: ParsingTest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &330290632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330290631}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a13cd9b4347633459580f8b9d1f18fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dataFilePath: unitsData.txt
+--- !u!4 &330290633
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330290631}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 13.635961, y: 18.475292, z: -7.4921875}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:

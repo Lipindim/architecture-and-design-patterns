@@ -66,9 +66,9 @@ namespace Asteroids
             }
         }
 
-        public GameObject Shot()
+        public bool TryShot(out GameObject bullet)
         {
-            return _shotingImplementation.Shot();
+            return _shotingImplementation.TryShot(out bullet);
         }
 
         public void GetDamage(float damage)
