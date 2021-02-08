@@ -5,13 +5,13 @@ namespace Asteroids
 {
     internal class EnemySpawnControllerInitializer
     {
-        private readonly IEnemyCache _enemyCache;
+        private readonly IUnitCache<Enemy> _enemyCache;
         private readonly PoolServices _poolServices;
         private readonly EnemySettings _astetoidSettings;
         private readonly EnemySettings _fightersSettings;
         private readonly ShotSettings _fighterShotSettings;
 
-        public EnemySpawnControllerInitializer(IEnemyCache enemyCache, PoolServices poolServices, EnemySettings astetoidSettings, EnemySettings fightersSettings, ShotSettings fighterShotSettings)
+        public EnemySpawnControllerInitializer(IUnitCache<Enemy> enemyCache, PoolServices poolServices, EnemySettings astetoidSettings, EnemySettings fightersSettings, ShotSettings fighterShotSettings)
         {
             _enemyCache = enemyCache;
             _poolServices = poolServices;

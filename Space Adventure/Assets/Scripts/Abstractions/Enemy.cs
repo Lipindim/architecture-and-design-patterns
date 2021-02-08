@@ -3,8 +3,8 @@
 
 namespace Asteroids
 {
-    public abstract class Enemy
+    public abstract class Enemy : Unit
     {
-        public GameObject GameObject { get; protected set; }
+        public int Score { get; protected set; }
     }
 }

@@ -21,7 +21,7 @@ namespace Asteroids
             _lockTime = DateTime.UtcNow;
         }
 
-        public bool TryShot(out GameObject bullet)
+        public bool TryShot(out Bullet bullet)
         {
             if (IsNotLock())
                 return _shipShoting.TryShot(out bullet);

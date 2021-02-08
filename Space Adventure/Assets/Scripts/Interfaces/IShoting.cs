@@ -5,6 +5,6 @@ namespace Asteroids
 {
     internal interface IShoting
     {
-         bool TryShot(out GameObject bullet);
+         bool TryShot(out Bullet bullet);
     }
 }

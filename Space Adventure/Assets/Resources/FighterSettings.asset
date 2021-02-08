@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: FighterSettings
   m_EditorClassIdentifier: 
   Prefab: {fileID: 7694152030808640175, guid: 201ca208efc4b1843abbbe5dda43d9f5, type: 3}
-  Speed: 15
+  Speed: 12
   SpawnIntervalTime: 2
   SpawnPositionY: 30
   SpawnStartPoisitionX: 0
   SpawnEntPositionX: 50
+  Health: 4
+  Score: 400

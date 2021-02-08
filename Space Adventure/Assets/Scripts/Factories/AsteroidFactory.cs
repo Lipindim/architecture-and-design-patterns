@@ -18,7 +18,8 @@ namespace Asteroids
         {
             var asteroidObject = _poolServices.Create(_asteroidSettings.Prefab);
             var move = new LinearDownMove(asteroidObject.transform, _asteroidSettings.Speed);
-            var asteroid = new Asteroid(move, asteroidObject);
+            var healthing = new UnitHealth(_asteroidSettings.Health);
+            var asteroid = new Asteroid(move, healthing, asteroidObject, _asteroidSettings.Score);
             return asteroid;
         }
     }

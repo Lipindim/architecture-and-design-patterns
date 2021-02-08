@@ -25,8 +25,9 @@ namespace Asteroids
             barrel.transform.localPosition = new Vector3(_fithgerShotSettings.BarrelPositon.x, _fithgerShotSettings.BarrelPositon.y);
             ShipShoting shipShoting = new ShipShoting(_fithgerShotSettings.Bullet, barrel.transform, _fithgerShotSettings.Force, _poolServices);
             ShipShotingWithReload shipShotingWithReload = new ShipShotingWithReload(shipShoting, _fithgerShotSettings.ReloadTimeSec);
+            var healthing = new UnitHealth(_fighterSettings.Health);
 
-            var fighter = new Fighter(fighterObject, move, rotarion, shipShotingWithReload);
+            var fighter = new Fighter(fighterObject, move, rotarion, shipShotingWithReload, healthing, _fighterSettings.Score);
             return fighter;
         }
     }

@@ -6,9 +6,9 @@ namespace Asteroids
     internal class EnemyRotationToPlayerController : IUpdateble
     {
         private readonly IMove _playerMove;
-        private readonly IEnemyCache _enemyCache;
+        private readonly IUnitCache<Enemy> _enemyCache;
 
-        public EnemyRotationToPlayerController(IEnemyCache enemyCache, IMove playerMove)
+        public EnemyRotationToPlayerController(IUnitCache<Enemy> enemyCache, IMove playerMove)
         {
             _enemyCache = enemyCache;
             _playerMove = playerMove;

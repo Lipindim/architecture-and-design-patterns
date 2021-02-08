@@ -1,17 +1,17 @@
 ﻿using System;
-
+using UnityEngine;
 
 namespace Asteroids
 {
-    internal class ShipHealth : IHealthing
+    internal class UnitHealth : IHealthing
     {
-        public event Action OnDestroy;
+        public event Action<IHealthing> OnDestroy;
 
         public float Health => _currentHealth;
 
         private float _currentHealth;
 
-        internal ShipHealth(float maxHealth)
+        internal UnitHealth(float maxHealth)
         {
             _currentHealth = maxHealth;
         }
@@ -23,7 +23,7 @@ namespace Asteroids
 
             if (_currentHealth <= 0)
             {
-                OnDestroy?.Invoke();
+                OnDestroy?.Invoke(this);
             }
         }
     }

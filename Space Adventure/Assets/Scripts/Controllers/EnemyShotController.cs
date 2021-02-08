@@ -1,22 +1,16 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
-
-
-namespace Asteroids
+﻿namespace Asteroids
 {
     internal class EnemyShotController : IUpdateble
     {
-        private readonly PoolServices _poolServices;
+        private readonly IUnitCache<Bullet> _bulletCache;
         private readonly IScreen _screen;
-        private readonly IEnemyCache _enemyCache;
-        private readonly List<GameObject> _bullets;
+        private readonly IUnitCache<Enemy> _enemyCache;
 
-        internal EnemyShotController(IEnemyCache enemyCache, IScreen screen, PoolServices poolServices)
+        internal EnemyShotController(IUnitCache<Enemy> enemyCache, IScreen screen, IUnitCache<Bullet> bulletCache)
         {
-            _poolServices = poolServices;
+            _bulletCache = bulletCache;
             _screen = screen;
             _enemyCache = enemyCache;
-            _bullets = new List<GameObject>();
         }
 
         public void Update(float deltaTime)
@@ -25,8 +19,8 @@ namespace Asteroids
             {
                 if (enemy is IShoting enemyShoting)
                 {
-                    if (enemyShoting.TryShot(out GameObject bullet))
-                        _bullets.Add(bullet);
+                    if (enemyShoting.TryShot(out Bullet bullet))
+                        _bulletCache.AddUnit(bullet);
                 }
             }
 
@@ -35,17 +29,15 @@ namespace Asteroids
 
         private void RemoveBulletsOutOfScreen()
         {
-            for (int i = 0; i < _bullets.Count; i++)
+            foreach (Bullet bullet in _bulletCache)
             {
-                Vector3 bulletPosition = _bullets[i].transform.position;
-                if (_screen.IsPositionOutOfScreen(bulletPosition))
+                if (_screen.IsPositionOutOfScreen(bullet.Position))
                 {
-                    _poolServices.Destroy(_bullets[i]);
-                    _bullets.RemoveAt(i);
-                    i--;
+                    _bulletCache.AddToRemoveUnit(bullet);
                 }
             }
-        }
 
+            _bulletCache.Clear();
+        }
     }
 }

@@ -15,7 +15,7 @@ namespace Asteroids
             _shipShoting = shipShoting;
             _reloadTime = reloadSeconds;
         }
-        public bool TryShot(out GameObject bullet)
+        public bool TryShot(out Bullet bullet)
         {
             if (IReload())
             {

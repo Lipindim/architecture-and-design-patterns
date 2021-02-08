@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 namespace Asteroids
 {
@@ -12,6 +12,7 @@ namespace Asteroids
         [SerializeField] private EnemySettings _asteroidSettings;
         [SerializeField] private EnemySettings _fighterSettings;
         [SerializeField] private ShotSettings _fighterShotSettings;
+        [SerializeField] private Text _scoreText;
 
         private IEnumerable<IUpdateble> _updatebles;
 
@@ -22,7 +23,8 @@ namespace Asteroids
                 _shotSettings, 
                 _asteroidSettings, 
                 _fighterSettings, 
-                _fighterShotSettings);
+                _fighterShotSettings,
+                _scoreText);
         }
 
         private void Update()

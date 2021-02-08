@@ -6,9 +6,9 @@ namespace Asteroids
     internal class EnemySpawnController : IUpdateble
     {
         private readonly IEnumerable<IEnemySpawner> _enemySpawners;
-        private readonly IEnemyCache _enemyCache;
+        private readonly IUnitCache<Enemy> _enemyCache;
 
-        public EnemySpawnController(IEnumerable<IEnemySpawner> enemySpawners, IEnemyCache enemyCache)
+        public EnemySpawnController(IEnumerable<IEnemySpawner> enemySpawners, IUnitCache<Enemy> enemyCache)
         {
             _enemySpawners = enemySpawners;
             _enemyCache = enemyCache;
@@ -21,7 +21,7 @@ namespace Asteroids
                 if (enemySpawner.IsReadyToSpawn())
                 {
                     Enemy enemy = enemySpawner.SpawnEnemyInRandomPosition();
-                    _enemyCache.AddEnemy(enemy);
+                    _enemyCache.AddUnit(enemy);
                 }
             }
         }

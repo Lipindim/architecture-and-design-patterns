@@ -2,9 +2,9 @@
 {
     internal class EnemyMoveController : IUpdateble
     {
-        private readonly IEnemyCache _enemyCache;
+        private readonly IUnitCache<Enemy> _enemyCache;
 
-        public EnemyMoveController(IEnemyCache enemyCache)
+        public EnemyMoveController(IUnitCache<Enemy> enemyCache)
         {
             _enemyCache = enemyCache;
         }
