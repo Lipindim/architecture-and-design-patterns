@@ -11,7 +11,7 @@ namespace Asteroids
         private readonly IMove _moveImplementation;
         private readonly IRotation _rotationImplementation;
 
-        public event Action OnDestroy
+        public event Action<IHealthing> OnDestroy
         {
             add
             {
@@ -66,7 +66,7 @@ namespace Asteroids
             }
         }
 
-        public bool TryShot(out GameObject bullet)
+        public bool TryShot(out Bullet bullet)
         {
             return _shotingImplementation.TryShot(out bullet);
         }

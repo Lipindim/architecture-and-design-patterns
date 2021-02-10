@@ -4,10 +4,10 @@ namespace Asteroids
 {
     internal class EnemyDestroyController : IUpdateble
     {
-        private readonly IEnemyCache _enemyCache;
+        private readonly IUnitCache<Enemy> _enemyCache;
         private readonly IScreen _screen;
 
-        public EnemyDestroyController(IEnemyCache enemyCache, IScreen screen)
+        public EnemyDestroyController(IUnitCache<Enemy> enemyCache, IScreen screen)
         {
             _enemyCache = enemyCache;
             _screen = screen;
@@ -21,7 +21,7 @@ namespace Asteroids
                 {
                     if (_screen.IsPositionOutOfScreen(enemyMove.CurrentPosition))
                     {
-                        _enemyCache.AddToRemoveEnemy(enemy);
+                        _enemyCache.AddToRemoveUnit(enemy);
                     }
                 }
             }

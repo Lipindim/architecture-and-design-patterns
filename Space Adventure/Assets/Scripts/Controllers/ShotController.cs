@@ -6,25 +6,24 @@ namespace Asteroids
 {
     internal class ShotController : IUpdateble
     {
-        private readonly PoolServices _poolServices;
+        private readonly IUnitCache<Bullet> _bulletCache;
         private readonly IScreen _screen;
         private readonly IShoting _shoting;
-        private readonly List<GameObject> _bullets;
 
-        internal ShotController(IShoting shoting, IScreen screen, PoolServices poolServices)
+        internal ShotController(IShoting shoting, IScreen screen, IUnitCache<Bullet> bulletCache)
         {
-            _poolServices = poolServices;
+            _bulletCache = bulletCache;
             _screen = screen;
             _shoting = shoting;
-            _bullets = new List<GameObject>();
         }
 
         public void Update(float deltaTime)
         {
             if (Input.GetButtonDown("Fire1"))
             {
-                if (_shoting.TryShot(out GameObject bullet))
-                    _bullets.Add(bullet);
+                if (_shoting.TryShot(out Bullet bullet))
+
+                    _bulletCache.AddUnit(bullet);
             }
 
             RemoveBulletsOutOfScreen();
@@ -32,16 +31,15 @@ namespace Asteroids
 
         private void RemoveBulletsOutOfScreen()
         {
-            for (int i = 0; i < _bullets.Count; i++)
+            foreach (Bullet bullet in _bulletCache)
             {
-                Vector3 bulletPosition = _bullets[i].transform.position;
-                if (_screen.IsPositionOutOfScreen(bulletPosition))
+                if (_screen.IsPositionOutOfScreen(bullet.Position))
                 {
-                    _poolServices.Destroy(_bullets[i]);
-                    _bullets.RemoveAt(i);
-                    i--;
+                    _bulletCache.AddToRemoveUnit(bullet);
                 }
             }
+
+            _bulletCache.Clear();
         }
 
     }

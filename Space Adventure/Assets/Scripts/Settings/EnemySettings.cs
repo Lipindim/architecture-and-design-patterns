@@ -12,5 +12,7 @@ namespace Asteroids
         public float SpawnPositionY;
         public float SpawnStartPoisitionX;
         public float SpawnEntPositionX;
+        public float Health;
+        public int Score;
     }
 }

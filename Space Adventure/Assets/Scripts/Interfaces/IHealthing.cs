@@ -5,7 +5,7 @@ namespace Asteroids
 {
     internal interface IHealthing
     {
-        event Action OnDestroy;
+        event Action<IHealthing> OnDestroy;
         float Health { get; }
         void GetDamage(float damage);
     }

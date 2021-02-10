@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: AsteroidSettings
   m_EditorClassIdentifier: 
   Prefab: {fileID: 4330506354081004072, guid: 411243defd6eb4341937dcbeaca6e6b6, type: 3}
-  Speed: 10
+  Speed: 8
   SpawnIntervalTime: 1
   SpawnPositionY: 30
   SpawnStartPoisitionX: 0
   SpawnEntPositionX: 50
+  Health: 2
+  Score: 100
