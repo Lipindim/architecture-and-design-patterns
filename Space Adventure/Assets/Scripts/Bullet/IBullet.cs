@@ -5,8 +5,7 @@ namespace Asteroids
 {
     public interface IBullet
     {
+        AttackType AttackType { get; }
         int Damage { get; }
-        Vector3 Position { get; }
-        GameObject GameObject { get; }
     }
 }

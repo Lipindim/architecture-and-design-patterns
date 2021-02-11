@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 
 namespace Asteroids
 {
     internal interface IShoting
     {
-         bool TryShot(out Bullet bullet);
+        event Action OnShot;
+        bool TryShot(out Bullet bullet);
     }
 }

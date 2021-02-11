@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+
 namespace Asteroids
 {
     internal class FighterFactory : IEnemyFactory
@@ -23,7 +24,7 @@ namespace Asteroids
 
             var barrel = GameObject.Instantiate(_fithgerShotSettings.Barrel, fighterObject.transform);
             barrel.transform.localPosition = new Vector3(_fithgerShotSettings.BarrelPositon.x, _fithgerShotSettings.BarrelPositon.y);
-            ShipShoting shipShoting = new ShipShoting(_fithgerShotSettings.Bullet, barrel.transform, _fithgerShotSettings.Force, _poolServices);
+            ShipShoting shipShoting = new ShipShoting( _fithgerShotSettings.Bullet, barrel.transform, _fithgerShotSettings.Force, _poolServices, AttackType.Paralysis, 2);
             ShipShotingWithReload shipShotingWithReload = new ShipShotingWithReload(shipShoting, _fithgerShotSettings.ReloadTimeSec);
             var healthing = new UnitHealth(_fighterSettings.Health);
 

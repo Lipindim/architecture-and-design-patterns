@@ -12,7 +12,9 @@ namespace Asteroids
             EnemySettings asteroidSettings,
             EnemySettings fighterSettings,
             ShotSettings fighterShotSettings,
-            Text scoreText)
+            Text scoreText,
+            AudioSource audioSource,
+            SoundSettings soundSettings)
         {
             var poolServices = new PoolServices();
             var playerFactory = new PlayerShipFactory(playerSettings, shotSettings, poolServices);
@@ -37,6 +39,8 @@ namespace Asteroids
             var destroyController = new DestroyController(enemyCache);
             IFormatter formatter = new Formatter();
             var scoreController = new ScoreController(enemyCache, scoreText, formatter);
+            var soundPlayer = new PlayerAudioPlayer(playerShip, soundSettings, audioSource);
+            var playerCollisionController = new PlayerCollisionController(playerShip, enemyBulletCache);
 
             List<IUpdateble> updatebles = new List<IUpdateble>();
             updatebles.Add(moveController);
@@ -47,6 +51,7 @@ namespace Asteroids
             updatebles.Add(enemyRotationToPlayerController);
             updatebles.Add(enemyShotController);
             updatebles.Add(enemyDestroyController);
+            updatebles.Add(playerCollisionController);
 
             return updatebles;
         }
