@@ -15,6 +15,18 @@ namespace Asteroids
             _shipShoting = shipShoting;
         }
 
+        public event Action OnShot
+        {
+            add
+            {
+                _shipShoting.OnShot += value;
+            }
+            remove
+            {
+                _shipShoting.OnShot -= value;
+            }
+        }
+
         public void Lock(float duration)
         {
             _lockDuration = duration;

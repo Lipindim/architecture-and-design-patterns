@@ -12,7 +12,10 @@ namespace Asteroids
         [SerializeField] private EnemySettings _asteroidSettings;
         [SerializeField] private EnemySettings _fighterSettings;
         [SerializeField] private ShotSettings _fighterShotSettings;
+        [SerializeField] private SoundSettings _soundSettings;
+
         [SerializeField] private Text _scoreText;
+        [SerializeField] private AudioSource _audioSource;
 
         private IEnumerable<IUpdateble> _updatebles;
 
@@ -24,7 +27,9 @@ namespace Asteroids
                 _asteroidSettings, 
                 _fighterSettings, 
                 _fighterShotSettings,
-                _scoreText);
+                _scoreText,
+                _audioSource,
+                _soundSettings);
         }
 
         private void Update()

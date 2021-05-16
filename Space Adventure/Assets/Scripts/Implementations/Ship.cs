@@ -4,12 +4,26 @@ using UnityEngine;
 
 namespace Asteroids
 {
-    internal sealed class Ship : IMove, IRotation, IHealthing, IShoting
+    internal sealed class Ship : IMove, IRotation, IHealthing, IShoting, ICollision
     {
         private readonly IHealthing _healthingImplementation;
         private readonly IShoting _shotingImplementation;
         private readonly IMove _moveImplementation;
         private readonly IRotation _rotationImplementation;
+
+        public event Action<Unit> OnCollision;
+
+        public event Action OnShot
+        {
+            add
+            {
+                _shotingImplementation.OnShot += value;
+            }
+            remove
+            {
+                _shotingImplementation.OnShot -= value;
+            }
+        }
 
         public event Action<IHealthing> OnDestroy
         {
@@ -74,6 +88,11 @@ namespace Asteroids
         public void GetDamage(float damage)
         {
             _healthingImplementation.GetDamage(damage);
+        }
+
+        public void Collision(Unit unit)
+        {
+            OnCollision?.Invoke(unit);
         }
     }
 }

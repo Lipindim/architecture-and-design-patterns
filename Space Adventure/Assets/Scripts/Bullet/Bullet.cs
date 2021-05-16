@@ -3,14 +3,17 @@
 
 namespace Asteroids
 {
-    public class Bullet : Unit
+    public class Bullet : Unit, IBullet
     {
         private readonly Transform _transform;
 
         public int Damage { get; private set; }
 
-        public Bullet(int damage, GameObject gameObject, Transform transform)
+        public AttackType AttackType { get; private set; }
+
+        public Bullet(int damage, AttackType attackType, GameObject gameObject, Transform transform)
         {
+            AttackType = attackType;
             Damage = damage;
             GameObject = gameObject;
             _transform = transform;

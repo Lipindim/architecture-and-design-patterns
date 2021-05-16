@@ -17,6 +17,7 @@ namespace Asteroids
         public float Health => _healthing.Health;
 
         public event Action<IHealthing> OnDestroy;
+        public event Action OnShot;
 
         public Fighter(GameObject gameObject, IMove move, IRotation rotation, IShoting shoting, IHealthing healthing, int score)
         {

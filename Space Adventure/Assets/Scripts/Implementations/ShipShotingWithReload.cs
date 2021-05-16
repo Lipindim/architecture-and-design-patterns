@@ -1,5 +1,4 @@
 ﻿using System;
-using UnityEngine;
 
 
 namespace Asteroids
@@ -15,6 +14,19 @@ namespace Asteroids
             _shipShoting = shipShoting;
             _reloadTime = reloadSeconds;
         }
+
+        public event Action OnShot
+        {
+            add
+            {
+                _shipShoting.OnShot += value;
+            }
+            remove
+            {
+                _shipShoting.OnShot -= value;
+            }
+        }
+
         public bool TryShot(out Bullet bullet)
         {
             if (IReload())
