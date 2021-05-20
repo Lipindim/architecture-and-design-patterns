@@ -3,7 +3,7 @@
 
 namespace Asteroids
 {
-    internal interface ICollision
+    public interface ICollision
     {
         event Action<Unit> OnCollision;
         void Collision(Unit unit);

@@ -3,7 +3,7 @@
 
 namespace Asteroids
 {
-    internal class PlayerCollisionController : IUpdateble
+    public class PlayerCollisionController : IUpdateble
     {
         private readonly Ship _playerShip;
         private readonly IUnitCache<Bullet> _enemyBullets;

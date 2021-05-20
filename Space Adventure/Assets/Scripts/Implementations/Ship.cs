@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Asteroids
 {
-    internal sealed class Ship : IMove, IRotation, IHealthing, IShoting, ICollision
+    public sealed class Ship : IMove, IRotation, IHealthing, IShoting, ICollision
     {
         private readonly IHealthing _healthingImplementation;
         private readonly IShoting _shotingImplementation;

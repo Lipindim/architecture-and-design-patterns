@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Asteroids
 {
-    internal class UnitHealth : IHealthing
+    public class UnitHealth : IHealthing
     {
         public event Action<IHealthing> OnDestroy;
 
@@ -11,7 +11,7 @@ namespace Asteroids
 
         private float _currentHealth;
 
-        internal UnitHealth(float maxHealth)
+        public UnitHealth(float maxHealth)
         {
             _currentHealth = maxHealth;
         }

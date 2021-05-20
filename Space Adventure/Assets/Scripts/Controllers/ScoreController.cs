@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Asteroids
 {
-    internal class ScoreController
+    public class ScoreController
     {
         private readonly IFormatter _formatter;
         private readonly Text _scoreText;

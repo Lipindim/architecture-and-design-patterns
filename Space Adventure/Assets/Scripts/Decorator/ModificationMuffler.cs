@@ -2,7 +2,7 @@
 
 namespace Asteroids.Decorator
 {
-    internal sealed class ModificationMuffler : ModificationWeapon
+    public sealed class ModificationMuffler : ModificationWeapon
     {
         private readonly AudioSource _audioSource;
         private readonly IMuffler _muffler;

@@ -1,6 +1,6 @@
 ﻿namespace Asteroids
 {
-    internal class PlayerParalysisController
+    public class PlayerParalysisController
     {
         private readonly ICollision _playerCollision;
         private readonly ShipShotingWithLock _shipShotingWithLock;

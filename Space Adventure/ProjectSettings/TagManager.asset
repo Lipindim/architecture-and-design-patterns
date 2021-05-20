@@ -7,6 +7,9 @@ TagManager:
   - Asteroid
   - Bullet
   - Fighter
+  - Wasp
+  - WaspBullet
+  - FighterBullet
   layers:
   - Default
   - TransparentFX

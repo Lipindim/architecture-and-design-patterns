@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Asteroids
 {
-    internal class ShipShoting : IShoting
+    public class ShipShoting : IShoting
     {
         private readonly AttackType _attackType;
         private readonly int _damage;
@@ -15,7 +15,7 @@ namespace Asteroids
 
         private readonly float _force;
 
-        internal ShipShoting(GameObject bullet, Transform barrel, float force, PoolServices poolServices, AttackType attackType, int damage)
+        public ShipShoting(GameObject bullet, Transform barrel, float force, PoolServices poolServices, AttackType attackType, int damage)
         {
             _attackType = attackType;
             _damage = damage;

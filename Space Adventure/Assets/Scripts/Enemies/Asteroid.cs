@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Asteroids
 {
-    internal class Asteroid : Enemy, IMove, IHealthing
+    public class Asteroid : Enemy, IMove, IHealthing
     {
         private readonly IMove _move;
         private readonly IHealthing _healthing;

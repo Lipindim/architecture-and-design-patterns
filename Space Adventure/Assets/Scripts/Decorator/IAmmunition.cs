@@ -2,7 +2,7 @@
 
 namespace Asteroids.Decorator
 {
-    internal interface IAmmunition
+    public interface IAmmunition
     {
         Rigidbody BulletInstance { get; }
         float TimeToDestroy { get; }

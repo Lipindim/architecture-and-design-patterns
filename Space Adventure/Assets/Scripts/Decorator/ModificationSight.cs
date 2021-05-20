@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Asteroids.Decorator
 {
-    internal class ModificationSight : ModificationWeapon
+    public class ModificationSight : ModificationWeapon
     {
         private readonly ISight _sight;
         private readonly Vector3 _sightPosition;

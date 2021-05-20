@@ -3,12 +3,14 @@
 
 namespace Asteroids
 {
-    internal class AsteroidFactory : IEnemyFactory
+    public class AsteroidFactory : IEnemyFactory
     {
         private readonly EnemySettings _asteroidSettings;
         private readonly PoolServices _poolServices;
 
-        internal AsteroidFactory(EnemySettings asteroidSettings, PoolServices poolServices)
+        public EnemyType EnemyType => EnemyType.Asteroid;
+
+        public AsteroidFactory(EnemySettings asteroidSettings, PoolServices poolServices)
         {
             _asteroidSettings = asteroidSettings;
             _poolServices = poolServices;

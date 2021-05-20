@@ -2,7 +2,7 @@
 
 namespace Asteroids
 {
-    internal class MoveTransform : IMove
+    public class MoveTransform : IMove
     {
         private readonly Transform _transform;
         private Vector3 _move;

@@ -4,13 +4,13 @@ using UnityEngine;
 
 namespace Asteroids
 {
-    internal class ShipShotingWithLock : IShoting
+    public class ShipShotingWithLock : IShoting
     {
         private readonly ShipShoting _shipShoting;
         private DateTime? _lockTime;
         private float _lockDuration;
 
-        internal ShipShotingWithLock(ShipShoting shipShoting)
+        public ShipShotingWithLock(ShipShoting shipShoting)
         {
             _shipShoting = shipShoting;
         }

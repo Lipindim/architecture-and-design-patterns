@@ -2,7 +2,7 @@
 
 namespace Asteroids.Decorator
 {
-    internal sealed class Bullet : IAmmunition
+    public sealed class Bullet : IAmmunition
     {
         public Rigidbody BulletInstance { get; }
         public float TimeToDestroy { get; }

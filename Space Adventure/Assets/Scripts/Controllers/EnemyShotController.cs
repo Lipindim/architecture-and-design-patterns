@@ -1,12 +1,12 @@
 ﻿namespace Asteroids
 {
-    internal class EnemyShotController : IUpdateble
+    public class EnemyShotController : IUpdateble
     {
         private readonly IUnitCache<Bullet> _bulletCache;
         private readonly IScreen _screen;
         private readonly IUnitCache<Enemy> _enemyCache;
 
-        internal EnemyShotController(IUnitCache<Enemy> enemyCache, IScreen screen, IUnitCache<Bullet> bulletCache)
+        public EnemyShotController(IUnitCache<Enemy> enemyCache, IScreen screen, IUnitCache<Bullet> bulletCache)
         {
             _bulletCache = bulletCache;
             _screen = screen;

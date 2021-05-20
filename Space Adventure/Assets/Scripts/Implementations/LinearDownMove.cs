@@ -2,7 +2,7 @@
 
 namespace Asteroids
 {
-    internal class LinearDownMove : IMove
+    public class LinearDownMove : IMove
     {
         private readonly Transform _transform;
 

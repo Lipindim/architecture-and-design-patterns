@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Asteroids
 {
-    internal class UnitCache<T> : IUnitCache<T> where T : Unit
+    public class UnitCache<T> : IUnitCache<T> where T : Unit
     {
         private readonly PoolServices _poolServices;
         private IList<T> _units;
@@ -14,7 +14,7 @@ namespace Asteroids
         public event Action<T> OnAdd;
         public event Action<T> OnRemove;
 
-        internal UnitCache(PoolServices poolServices)
+        public UnitCache(PoolServices poolServices)
         {
             _poolServices = poolServices;
             _units = new List<T>();

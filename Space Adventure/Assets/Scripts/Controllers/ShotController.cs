@@ -4,13 +4,13 @@ using UnityEngine;
 
 namespace Asteroids
 {
-    internal class ShotController : IUpdateble
+    public class ShotController : IUpdateble
     {
         private readonly IUnitCache<Bullet> _bulletCache;
         private readonly IScreen _screen;
         private readonly IShoting _shoting;
 
-        internal ShotController(IShoting shoting, IScreen screen, IUnitCache<Bullet> bulletCache)
+        public ShotController(IShoting shoting, IScreen screen, IUnitCache<Bullet> bulletCache)
         {
             _bulletCache = bulletCache;
             _screen = screen;

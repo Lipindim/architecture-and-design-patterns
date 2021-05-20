@@ -2,7 +2,7 @@
 
 namespace Asteroids
 {
-    internal class PlayerShipFactory
+    public class PlayerShipFactory
     {
         private readonly PlayerSettings _playerSettings;
         private readonly ShotSettings _shotSettings;

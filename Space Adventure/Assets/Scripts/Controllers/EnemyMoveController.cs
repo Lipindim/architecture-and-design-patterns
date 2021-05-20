@@ -1,6 +1,6 @@
 ﻿namespace Asteroids
 {
-    internal class EnemyMoveController : IUpdateble
+    public class EnemyMoveController : IUpdateble
     {
         private readonly IUnitCache<Enemy> _enemyCache;
 

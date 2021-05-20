@@ -2,7 +2,7 @@
 
 namespace Asteroids.Decorator
 {
-    internal sealed class Example : MonoBehaviour
+    public sealed class Example : MonoBehaviour
     {
         private IFire _fire;
         [Header("Start Gun")]

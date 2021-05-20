@@ -9,27 +9,30 @@ namespace Asteroids
 
         [SerializeField] private PlayerSettings _playerSettings;
         [SerializeField] private ShotSettings _shotSettings;
-        [SerializeField] private EnemySettings _asteroidSettings;
-        [SerializeField] private EnemySettings _fighterSettings;
-        [SerializeField] private ShotSettings _fighterShotSettings;
+        [SerializeField] private EnemySettings[] _enemiesSettings;
         [SerializeField] private SoundSettings _soundSettings;
 
         [SerializeField] private Text _scoreText;
         [SerializeField] private AudioSource _audioSource;
+        [SerializeField] private AudioSource _backgroundAudioSource;
+        [SerializeField] private RoundSettings[] _roundsSettings;
 
         private IEnumerable<IUpdateble> _updatebles;
+        private RoundsController _roundsController;
 
         private void Start()
         {
             GameInitializer gameInitializer = new GameInitializer();
-            _updatebles = gameInitializer.Initialize(_playerSettings, 
+            (_updatebles, _roundsController) = gameInitializer.Initialize(_playerSettings, 
                 _shotSettings, 
-                _asteroidSettings, 
-                _fighterSettings, 
-                _fighterShotSettings,
+                _enemiesSettings, 
                 _scoreText,
                 _audioSource,
-                _soundSettings);
+                _soundSettings,
+                _backgroundAudioSource,
+                _roundsSettings);
+
+            _roundsController.Start();
         }
 
         private void Update()

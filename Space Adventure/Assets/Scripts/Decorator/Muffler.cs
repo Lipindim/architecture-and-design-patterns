@@ -2,7 +2,7 @@
 
 namespace Asteroids.Decorator
 {
-    internal sealed class Muffler : IMuffler
+    public sealed class Muffler : IMuffler
     {
         public AudioClip AudioClipMuffler { get; }
         public float VolumeFireOnMuffler { get; }

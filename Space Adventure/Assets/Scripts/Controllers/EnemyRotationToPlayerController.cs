@@ -3,7 +3,7 @@
 
 namespace Asteroids
 {
-    internal class EnemyRotationToPlayerController : IUpdateble
+    public class EnemyRotationToPlayerController : IUpdateble
     {
         private readonly IMove _playerMove;
         private readonly IUnitCache<Enemy> _enemyCache;

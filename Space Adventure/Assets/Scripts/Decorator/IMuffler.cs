@@ -2,7 +2,7 @@
 
 namespace Asteroids.Decorator
 {
-    internal interface IMuffler
+    public interface IMuffler
     {
         AudioClip AudioClipMuffler { get; }
         float VolumeFireOnMuffler { get; }

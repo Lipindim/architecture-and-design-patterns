@@ -1,20 +1,21 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Asteroids
 {
 
-    internal class GameInitializer
+    public class GameInitializer
     {
-        internal IEnumerable<IUpdateble> Initialize(PlayerSettings playerSettings, 
+        public (IEnumerable<IUpdateble>, RoundsController) Initialize(PlayerSettings playerSettings, 
             ShotSettings shotSettings,
-            EnemySettings asteroidSettings,
-            EnemySettings fighterSettings,
-            ShotSettings fighterShotSettings,
+            EnemySettings[] enemiesSettings,
             Text scoreText,
             AudioSource audioSource,
-            SoundSettings soundSettings)
+            SoundSettings soundSettings,
+            AudioSource backgroundAudioSource,
+            RoundSettings[] roundsSettings)
         {
             var poolServices = new PoolServices();
             var playerFactory = new PlayerShipFactory(playerSettings, shotSettings, poolServices);
@@ -28,7 +29,7 @@ namespace Asteroids
             MoveController moveController = new MoveController(playerShip, playerShip, screen);
             ShotController shotController = new ShotController(playerShip, screen, playerBulletCache);
 
-            var enemySpawnControllerInitializer = new EnemySpawnControllerInitializer(enemyCache, poolServices, asteroidSettings, fighterSettings, fighterShotSettings);
+            var enemySpawnControllerInitializer = new EnemySpawnControllerInitializer(enemyCache, poolServices, enemiesSettings);
             EnemySpawnController enemySpawnController = enemySpawnControllerInitializer.Initialize();
             var collistionController = new CollisionController(enemyCache, playerBulletCache);
 
@@ -41,6 +42,8 @@ namespace Asteroids
             var scoreController = new ScoreController(enemyCache, scoreText, formatter);
             var soundPlayer = new PlayerAudioPlayer(playerShip, soundSettings, audioSource);
             var playerCollisionController = new PlayerCollisionController(playerShip, enemyBulletCache);
+            var backroundMusicController = new BackgroundMusicController(backgroundAudioSource);
+            var roundsController = new RoundsController(roundsSettings, backroundMusicController, enemySpawnController);
 
             List<IUpdateble> updatebles = new List<IUpdateble>();
             updatebles.Add(moveController);
@@ -53,7 +56,7 @@ namespace Asteroids
             updatebles.Add(enemyDestroyController);
             updatebles.Add(playerCollisionController);
 
-            return updatebles;
+            return (updatebles, roundsController);
         }
     }
 

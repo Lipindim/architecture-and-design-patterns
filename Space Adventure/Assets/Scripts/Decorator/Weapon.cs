@@ -2,7 +2,7 @@
 
 namespace Asteroids.Decorator
 {
-    internal sealed class Weapon : IFire
+    public sealed class Weapon : IFire
     {
         public AudioClip AudioClip
         {

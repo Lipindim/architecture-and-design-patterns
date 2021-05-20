@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Asteroids
 {
-    internal sealed class ObjectPool
+    public sealed class ObjectPool
     {
         private readonly Stack<GameObject> _stack = new Stack<GameObject>();
         private readonly GameObject _prefab;

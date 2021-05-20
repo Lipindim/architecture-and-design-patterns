@@ -2,13 +2,13 @@
 
 namespace Asteroids
 {
-    internal class MoveController : IUpdateble
+    public class MoveController : IUpdateble
     {
         private readonly IMove _move;
         private readonly IRotation _rotation;
         private readonly IScreen _screen;
 
-        internal MoveController( IMove move, IRotation rotation, IScreen screen)
+        public MoveController( IMove move, IRotation rotation, IScreen screen)
         {
             _move = move;
             _rotation = rotation;

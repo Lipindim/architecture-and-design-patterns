@@ -6,6 +6,7 @@ namespace Asteroids
     [CreateAssetMenu(fileName = "EnemySettings", menuName = "Data/EnemySettings")]
     public class EnemySettings : ScriptableObject
     {
+        public EnemyType EnemyType;
         public GameObject Prefab;
         public float Speed;
         public float SpawnIntervalTime;
@@ -14,5 +15,6 @@ namespace Asteroids
         public float SpawnEntPositionX;
         public float Health;
         public int Score;
+        public ShotSettings ShotSettings;
     }
 }

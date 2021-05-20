@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6931971882990822041}
   m_Layer: 0
   m_Name: FighterBullet
-  m_TagString: Untagged
+  m_TagString: FighterBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

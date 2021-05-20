@@ -131,6 +131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 141020503}
   - component: {fileID: 141020502}
+  - component: {fileID: 141020504}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -152,13 +153,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerSettings: {fileID: 11400000, guid: ce8a42ef43dd33348b32277863920b6d, type: 2}
   _shotSettings: {fileID: 11400000, guid: cc56febf2a54d454bb0355d7d740ea86, type: 2}
-  _asteroidSettings: {fileID: 11400000, guid: 55860e23b92bfbb40af992c8faaeeefb, type: 2}
-  _fighterSettings: {fileID: 11400000, guid: f35348f66cd5a72469121fa773f16e0d, type: 2}
-  _fighterShotSettings: {fileID: 11400000, guid: 9b95aada1b45fd6419432e63b9fb5e70,
-    type: 2}
+  _enemiesSettings:
+  - {fileID: 11400000, guid: 55860e23b92bfbb40af992c8faaeeefb, type: 2}
+  - {fileID: 11400000, guid: f35348f66cd5a72469121fa773f16e0d, type: 2}
+  - {fileID: 11400000, guid: 96ea95b46fa1d2c4c9d7f5d85f3b524f, type: 2}
   _soundSettings: {fileID: 11400000, guid: b55b1d8150e60c54d96c99c370e7c6e1, type: 2}
   _scoreText: {fileID: 1416801150}
   _audioSource: {fileID: 519420030}
+  _backgroundAudioSource: {fileID: 141020504}
+  _roundsSettings:
+  - {fileID: 11400000, guid: eff59b4c7a7aecd49a107c9a42956c4a, type: 2}
+  - {fileID: 11400000, guid: 75cf40693a18cc644b0c45b16aefc722, type: 2}
 --- !u!4 &141020503
 Transform:
   m_ObjectHideFlags: 0
@@ -173,6 +178,102 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &141020504
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 141020501}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &330290631
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,7 +303,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a13cd9b4347633459580f8b9d1f18fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dataFilePath: unitsData.txt
 --- !u!4 &330290633
 Transform:
   m_ObjectHideFlags: 0
@@ -256,7 +356,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0

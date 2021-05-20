@@ -3,15 +3,15 @@
 
 namespace Asteroids
 {
-    internal class FighterFactory : IEnemyFactory
+    public class FighterFactory : IEnemyFactory
     {
-        private readonly ShotSettings _fithgerShotSettings;
         private readonly EnemySettings _fighterSettings;
         private readonly PoolServices _poolServices;
 
-        internal FighterFactory(EnemySettings fighterSettings, PoolServices poolServices, ShotSettings fithgerShotSettings)
+        public EnemyType EnemyType => EnemyType.Fighter;
+
+        public FighterFactory(EnemySettings fighterSettings, PoolServices poolServices)
         {
-            _fithgerShotSettings = fithgerShotSettings;
             _fighterSettings = fighterSettings;
             _poolServices = poolServices;
         }
@@ -22,10 +22,10 @@ namespace Asteroids
             var move = new LinearDownMove(fighterObject.transform, _fighterSettings.Speed);
             var rotarion = new RotationShip(fighterObject.transform);
 
-            var barrel = GameObject.Instantiate(_fithgerShotSettings.Barrel, fighterObject.transform);
-            barrel.transform.localPosition = new Vector3(_fithgerShotSettings.BarrelPositon.x, _fithgerShotSettings.BarrelPositon.y);
-            ShipShoting shipShoting = new ShipShoting( _fithgerShotSettings.Bullet, barrel.transform, _fithgerShotSettings.Force, _poolServices, AttackType.Paralysis, 2);
-            ShipShotingWithReload shipShotingWithReload = new ShipShotingWithReload(shipShoting, _fithgerShotSettings.ReloadTimeSec);
+            var barrel = GameObject.Instantiate(_fighterSettings.ShotSettings.Barrel, fighterObject.transform);
+            barrel.transform.localPosition = new Vector3(_fighterSettings.ShotSettings.BarrelPositon.x, _fighterSettings.ShotSettings.BarrelPositon.y);
+            ShipShoting shipShoting = new ShipShoting(_fighterSettings.ShotSettings.Bullet, barrel.transform, _fighterSettings.ShotSettings.Force, _poolServices, AttackType.Paralysis, 2);
+            ShipShotingWithReload shipShotingWithReload = new ShipShotingWithReload(shipShoting, _fighterSettings.ShotSettings.ReloadTimeSec);
             var healthing = new UnitHealth(_fighterSettings.Health);
 
             var fighter = new Fighter(fighterObject, move, rotarion, shipShotingWithReload, healthing, _fighterSettings.Score);

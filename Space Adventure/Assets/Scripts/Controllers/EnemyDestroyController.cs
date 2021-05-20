@@ -2,7 +2,7 @@
 
 namespace Asteroids
 {
-    internal class EnemyDestroyController : IUpdateble
+    public class EnemyDestroyController : IUpdateble
     {
         private readonly IUnitCache<Enemy> _enemyCache;
         private readonly IScreen _screen;

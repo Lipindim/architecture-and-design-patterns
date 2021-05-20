@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Asteroids
 {
-    internal class Fighter : Enemy, IMove, IRotation, IShoting, IHealthing
+    public class Fighter : Enemy, IMove, IRotation, IShoting, IHealthing
     {
         private readonly IMove _move;
         private readonly IRotation _rotation;

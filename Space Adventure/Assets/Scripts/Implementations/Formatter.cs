@@ -3,7 +3,7 @@
 
 namespace Asteroids
 {
-    internal class Formatter : IFormatter
+    public class Formatter : IFormatter
     {
         public string FormatValue(int value)
         {

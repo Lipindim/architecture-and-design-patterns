@@ -1,6 +1,6 @@
 ﻿namespace Asteroids
 {
-    internal interface IFormatter
+    public interface IFormatter
     {
         string FormatValue(int value);
     }

@@ -3,7 +3,7 @@
 
 namespace Asteroids
 {
-    internal interface IHealthing
+    public interface IHealthing
     {
         event Action<IHealthing> OnDestroy;
         float Health { get; }

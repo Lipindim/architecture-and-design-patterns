@@ -4,7 +4,7 @@
 namespace Asteroids
 {
     [CreateAssetMenu(fileName = "ShotSettings", menuName = "Data/ShotSettings")]
-    internal class ShotSettings : ScriptableObject
+    public class ShotSettings : ScriptableObject
     {
         public float Force;
         public float ReloadTimeSec;

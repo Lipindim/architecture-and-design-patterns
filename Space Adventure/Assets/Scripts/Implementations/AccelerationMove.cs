@@ -2,7 +2,7 @@
 
 namespace Asteroids
 {
-    internal sealed class AccelerationMove : MoveTransform
+    public sealed class AccelerationMove : MoveTransform
     {
         private readonly float _acceleration;
 

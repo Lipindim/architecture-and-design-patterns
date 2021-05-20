@@ -3,7 +3,7 @@
 
 namespace Asteroids
 {
-    internal class ShipShotingWithReload : IShoting
+    public class ShipShotingWithReload : IShoting
     {
         private readonly ShipShoting _shipShoting;
         private readonly float _reloadTime;

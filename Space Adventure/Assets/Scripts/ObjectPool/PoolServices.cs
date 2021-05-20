@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Asteroids
 {
-    internal sealed class PoolServices
+    public sealed class PoolServices
     {
         private readonly Dictionary<string, ObjectPool> _poolCache = new Dictionary<string, ObjectPool>();
 

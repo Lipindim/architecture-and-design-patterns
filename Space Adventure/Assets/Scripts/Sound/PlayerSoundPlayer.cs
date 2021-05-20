@@ -2,7 +2,7 @@
 
 namespace Asteroids
 {
-    internal class PlayerAudioPlayer
+    public class PlayerAudioPlayer
     {
         private readonly SoundSettings _soundSettings;
         private readonly AudioSource _audioSource;

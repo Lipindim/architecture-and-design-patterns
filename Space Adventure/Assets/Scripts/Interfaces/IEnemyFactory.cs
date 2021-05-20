@@ -1,7 +1,8 @@
 ﻿namespace Asteroids
 {
-    internal interface IEnemyFactory
+    public interface IEnemyFactory
     {
+        EnemyType EnemyType { get; }
         Enemy Create();
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Asteroids.Decorator
 {
-    internal abstract class ModificationWeapon : IFire
+    public abstract class ModificationWeapon : IFire
     {
         private Weapon _weapon;
         
