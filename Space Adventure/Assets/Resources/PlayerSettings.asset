@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartPositoinX: 10
   StartPositionY: 10
-  Speed: 5
+  Speed: 20
   Acceleration: 3
   Hp: 10
   PlayerPrefab: {fileID: 6212808369234568052, guid: f4d69a4ee28aa3e40a486baa40f6a722,

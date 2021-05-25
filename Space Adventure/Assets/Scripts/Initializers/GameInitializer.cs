@@ -15,7 +15,8 @@ namespace Asteroids
             AudioSource audioSource,
             SoundSettings soundSettings,
             AudioSource backgroundAudioSource,
-            RoundSettings[] roundsSettings)
+            RoundSettings[] roundsSettings,
+            Transform backTransform)
         {
             var poolServices = new PoolServices();
             var playerFactory = new PlayerShipFactory(playerSettings, shotSettings, poolServices);
@@ -29,7 +30,7 @@ namespace Asteroids
             MoveController moveController = new MoveController(playerShip, playerShip, screen);
             ShotController shotController = new ShotController(playerShip, screen, playerBulletCache);
 
-            var enemySpawnControllerInitializer = new EnemySpawnControllerInitializer(enemyCache, poolServices, enemiesSettings);
+            var enemySpawnControllerInitializer = new EnemySpawnControllerInitializer(enemyCache, poolServices, enemiesSettings, playerShip);
             EnemySpawnController enemySpawnController = enemySpawnControllerInitializer.Initialize();
             var collistionController = new CollisionController(enemyCache, playerBulletCache);
 
@@ -41,9 +42,10 @@ namespace Asteroids
             IFormatter formatter = new Formatter();
             var scoreController = new ScoreController(enemyCache, scoreText, formatter);
             var soundPlayer = new PlayerAudioPlayer(playerShip, soundSettings, audioSource);
-            var playerCollisionController = new PlayerCollisionController(playerShip, enemyBulletCache);
+            var playerCollisionController = new PlayerCollisionController(playerShip, enemyBulletCache, enemyCache);
             var backroundMusicController = new BackgroundMusicController(backgroundAudioSource);
             var roundsController = new RoundsController(roundsSettings, backroundMusicController, enemySpawnController);
+            var backMover = new BackgroundMover(backTransform);
 
             List<IUpdateble> updatebles = new List<IUpdateble>();
             updatebles.Add(moveController);
@@ -55,6 +57,7 @@ namespace Asteroids
             updatebles.Add(enemyShotController);
             updatebles.Add(enemyDestroyController);
             updatebles.Add(playerCollisionController);
+            updatebles.Add(backMover);
 
             return (updatebles, roundsController);
         }

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddc7b0207271038419bc839aee6676a6, type: 3}
+  m_Name: BomberSettings
+  m_EditorClassIdentifier: 
+  EnemyType: 5
+  Prefab: {fileID: 4037210833962436519, guid: 514c5f4337ef819428f022ac360e9243, type: 3}
+  Speed: 10
+  SpawnIntervalTime: 1
+  SpawnPositionY: 30
+  SpawnStartPoisitionX: 0
+  SpawnEntPositionX: 50
+  Health: 4
+  Score: 1000
+  ShotSettings: {fileID: 0}

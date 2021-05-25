@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Asteroids
 {
-    public class Fighter : Enemy, IMove, IRotation, IShoting, IHealthing
+    public class ShootingEnemy : Enemy, IMove, IRotation, IShoting, IHealthing
     {
         private readonly IMove _move;
         private readonly IRotation _rotation;
@@ -19,8 +19,9 @@ namespace Asteroids
         public event Action<IHealthing> OnDestroy;
         public event Action OnShot;
 
-        public Fighter(GameObject gameObject, IMove move, IRotation rotation, IShoting shoting, IHealthing healthing, int score)
+        public ShootingEnemy(GameObject gameObject, IMove move, IRotation rotation, IShoting shoting, IHealthing healthing, int score, EnemyType enemyType)
         {
+            EnemyType = enemyType;
             Score = score;
             _healthing = healthing;
             GameObject = gameObject;

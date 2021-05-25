@@ -48,7 +48,7 @@ namespace Asteroids
             
         }
 
-        private bool IReload()
+        protected bool IReload()
         {
             if (_lastShotTime == null)
                 return false;

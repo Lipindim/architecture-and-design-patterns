@@ -1,7 +1,4 @@
-﻿using UnityEngine;
-
-
-namespace Asteroids
+﻿namespace Asteroids
 {
     public class AsteroidFactory : IEnemyFactory
     {
@@ -21,8 +18,8 @@ namespace Asteroids
             var asteroidObject = _poolServices.Create(_asteroidSettings.Prefab);
             var move = new LinearDownMove(asteroidObject.transform, _asteroidSettings.Speed);
             var healthing = new UnitHealth(_asteroidSettings.Health);
-            var asteroid = new Asteroid(move, healthing, asteroidObject, _asteroidSettings.Score);
-            return asteroid;
+            var enemy = new MovingEnemy(move, healthing, asteroidObject, _asteroidSettings.Score, EnemyType);
+            return enemy;
         }
     }
 }

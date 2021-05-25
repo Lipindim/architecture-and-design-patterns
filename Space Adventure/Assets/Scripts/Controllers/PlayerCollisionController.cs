@@ -7,11 +7,13 @@ namespace Asteroids
     {
         private readonly Ship _playerShip;
         private readonly IUnitCache<Bullet> _enemyBullets;
+        private readonly IUnitCache<Enemy> _enemyCache;
 
-        public PlayerCollisionController(Ship playerShip, IUnitCache<Bullet> enemyBullets)
+        public PlayerCollisionController(Ship playerShip, IUnitCache<Bullet> enemyBullets, IUnitCache<Enemy> enemyCache)
         {
             _playerShip = playerShip;
             _enemyBullets = enemyBullets;
+            _enemyCache = enemyCache;
         }
 
         public void Update(float deltaTime)
@@ -25,8 +27,20 @@ namespace Asteroids
                     _enemyBullets.AddToRemoveUnit(bullet);
                 }
             }
-
             _enemyBullets.Clear();
+
+            foreach (Enemy enemy in _enemyCache)
+            {
+                Vector3 distanse = enemy.Position - _playerShip.CurrentPosition;
+                Debug.Log(distanse.sqrMagnitude);
+                Debug.Log(enemy.EnemyType);
+                if (distanse.sqrMagnitude < 4.0f && (enemy.EnemyType == EnemyType.Asteroid || enemy.EnemyType == EnemyType.Bomber))
+                {
+                    _playerShip.Collision(enemy);
+                    _enemyCache.AddToRemoveUnit(enemy);
+                }
+            }
+            _enemyCache.Clear();
         }
     }
 }

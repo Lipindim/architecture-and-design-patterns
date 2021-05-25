@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddc7b0207271038419bc839aee6676a6, type: 3}
+  m_Name: StrikerSettings
+  m_EditorClassIdentifier: 
+  EnemyType: 4
+  Prefab: {fileID: 4318226003241688118, guid: 08ce2ce791e2083428e797117c1a55cd, type: 3}
+  Speed: 10
+  SpawnIntervalTime: 0
+  SpawnPositionY: 30
+  SpawnStartPoisitionX: 0
+  SpawnEntPositionX: 50
+  Health: 5
+  Score: 1500
+  ShotSettings: {fileID: 11400000, guid: 0f819a16a2ae54d488d06723e7b29c94, type: 2}

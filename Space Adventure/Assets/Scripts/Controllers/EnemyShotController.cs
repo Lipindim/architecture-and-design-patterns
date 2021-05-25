@@ -1,4 +1,6 @@
-﻿namespace Asteroids
+﻿using UnityEngine;
+
+namespace Asteroids
 {
     public class EnemyShotController : IUpdateble
     {

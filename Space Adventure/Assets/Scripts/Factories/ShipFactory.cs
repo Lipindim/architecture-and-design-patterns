@@ -27,9 +27,10 @@ namespace Asteroids
             barrel.transform.localPosition = new Vector3(_shotSettings.BarrelPositon.x, _shotSettings.BarrelPositon.y);
             ShipShoting shipShoting = new ShipShoting(_shotSettings.Bullet, barrel.transform, _shotSettings.Force, _poolServices, AttackType.Damage, 1);
             ShipShotingWithLock shipShotingWithLock = new ShipShotingWithLock(shipShoting);
-            Ship playerShip = new Ship(moveTransform, rotation, null, shipShotingWithLock);
+            IHealthing healthing = new UnitHealth(_playerSettings.Hp);
+            Ship playerShip = new Ship(moveTransform, rotation, healthing, shipShotingWithLock);
 
-            var playerParalisysController = new PlayerParalysisController(playerShip, shipShotingWithLock);
+            var playerParalisysController = new PlayerParalysisController(playerShip, shipShotingWithLock, playerShip);
 
             return playerShip;
         }

@@ -5,6 +5,8 @@
         None = 0,
         Asteroid = 1,
         Fighter = 2,
-        Wasp
+        Wasp = 3,
+        Striker = 4,
+        Bomber
     }
 }

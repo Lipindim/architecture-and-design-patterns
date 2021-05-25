@@ -10,6 +10,8 @@ TagManager:
   - Wasp
   - WaspBullet
   - FighterBullet
+  - StrikerBullet
+  - Bomber
   layers:
   - Default
   - TransparentFX

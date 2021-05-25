@@ -2,9 +2,8 @@
 
 namespace Asteroids
 {
-    public interface IMove
+    public interface IMove : ILocation
     {
-        Vector3 CurrentPosition { get; }
         float Speed { get; }
         void Move(float horizontal, float vertical, float deltaTime);
 

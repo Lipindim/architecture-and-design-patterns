@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Asteroids
 {
-    public class Asteroid : Enemy, IMove, IHealthing
+    public class MovingEnemy : Enemy, IMove, IHealthing
     {
         private readonly IMove _move;
         private readonly IHealthing _healthing;
@@ -16,11 +16,12 @@ namespace Asteroids
 
         public float Health => _healthing.Health;
 
-        public Asteroid(IMove move, IHealthing healthing, GameObject gameObject, int score)
+        public MovingEnemy(IMove move, IHealthing healthing, GameObject gameObject, int score, EnemyType enemyType)
         {
             Score = score;
             _healthing = healthing;
             GameObject = gameObject;
+            EnemyType = enemyType;
             _move = move;
 
             _healthing.OnDestroy += HealthingOnDestroy;

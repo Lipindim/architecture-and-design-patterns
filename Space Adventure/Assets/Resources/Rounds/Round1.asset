@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ab10c54b3d7242459bc7fea4f5cb9ad, type: 3}
   m_Name: Round1
   m_EditorClassIdentifier: 
-  Duration: 10
+  Duration: 60
   BackgroundMusic: {fileID: 8300000, guid: b5388c4e932319e449ff8eba456ff8fc, type: 3}
   Enemies:
-  - Type: 3
-    Count: 10
+  - Type: 1
+    Count: 0
   - Type: 2
-    Count: 5
+    Count: 0
+  - Type: 5
+    Count: 20
   Boss: 0

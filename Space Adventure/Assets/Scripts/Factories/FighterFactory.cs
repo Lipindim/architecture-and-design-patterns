@@ -28,7 +28,7 @@ namespace Asteroids
             ShipShotingWithReload shipShotingWithReload = new ShipShotingWithReload(shipShoting, _fighterSettings.ShotSettings.ReloadTimeSec);
             var healthing = new UnitHealth(_fighterSettings.Health);
 
-            var fighter = new Fighter(fighterObject, move, rotarion, shipShotingWithReload, healthing, _fighterSettings.Score);
+            var fighter = new ShootingEnemy(fighterObject, move, rotarion, shipShotingWithReload, healthing, _fighterSettings.Score, EnemyType);
             return fighter;
         }
     }
