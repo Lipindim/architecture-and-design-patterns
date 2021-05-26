@@ -32,8 +32,6 @@ namespace Asteroids
             foreach (Enemy enemy in _enemyCache)
             {
                 Vector3 distanse = enemy.Position - _playerShip.CurrentPosition;
-                Debug.Log(distanse.sqrMagnitude);
-                Debug.Log(enemy.EnemyType);
                 if (distanse.sqrMagnitude < 4.0f && (enemy.EnemyType == EnemyType.Asteroid || enemy.EnemyType == EnemyType.Bomber))
                 {
                     _playerShip.Collision(enemy);

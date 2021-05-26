@@ -25,5 +25,10 @@ namespace Asteroids
         {
             return _camera.WorldToScreenPoint(position);
         }
+
+        public float GetPixelHeight()
+        {
+            return _camera.pixelHeight;
+        }
     }
 }

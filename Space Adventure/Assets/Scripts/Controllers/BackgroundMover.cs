@@ -1,30 +1,63 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
+
 
 namespace Asteroids
 {
     public class BackgroundMover : IUpdateble
     {
-        private readonly Transform _backTransform;
-        private readonly UnityTimer _unityTimer;
 
-        public BackgroundMover(Transform backTransform)
+        #region Fields
+        
+        private readonly IScreen _screen;
+        private readonly GameObject _background;
+        private readonly RectTransform _rectTransform;
+
+        private bool _readyMove = false;
+        private float _deltyY;
+
+        #endregion
+
+
+        #region ClassLifeCycles
+
+        public BackgroundMover(GameObject background, IScreen screen)
         {
-            _backTransform = backTransform;
-            _unityTimer = new UnityTimer(0.01f, 1);
+            _screen = screen;
+            _background = background;
+            _rectTransform = background.GetComponent<RectTransform>();
+            
         }
+
+        #endregion
+
+
+        #region Methods
+
+        public void SetBackgroundImage(Sprite sprite, float duration)
+        {
+            Image image = _background.GetComponent<Image>();
+            image.sprite = sprite;
+            float proportionsCoefficient = sprite.rect.height / sprite.rect.width;
+            float newHeight = proportionsCoefficient * _rectTransform.rect.width;
+            _rectTransform.sizeDelta = new Vector2(_rectTransform.sizeDelta.x, newHeight);
+            _rectTransform.anchoredPosition = new Vector2(_rectTransform.anchoredPosition.x, newHeight / 2);
+            _deltyY = (newHeight - _screen.GetPixelHeight()) / duration;
+            _readyMove = true;
+        }
+
+        #endregion
+
+
+        #region IUpdateble
+
         public void Update(float deltaTime)
         {
-            _unityTimer.Tick(deltaTime);
-            if (_unityTimer.IsTimeUp)
-            {
-                _backTransform.position += new Vector3(0, -0.01f);
-                _unityTimer.Reset();
-            }
+            if (_readyMove)
+                _rectTransform.anchoredPosition += new Vector2(0, -_deltyY * deltaTime);
         }
+
+        #endregion
+
     }
 }

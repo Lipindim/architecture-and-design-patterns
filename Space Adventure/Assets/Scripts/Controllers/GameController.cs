@@ -16,7 +16,7 @@ namespace Asteroids
         [SerializeField] private AudioSource _audioSource;
         [SerializeField] private AudioSource _backgroundAudioSource;
         [SerializeField] private RoundSettings[] _roundsSettings;
-        [SerializeField] private Transform _backTransform;
+        [SerializeField] private GameObject _background;
 
         private IEnumerable<IUpdateble> _updatebles;
         private RoundsController _roundsController;
@@ -32,7 +32,7 @@ namespace Asteroids
                 _soundSettings,
                 _backgroundAudioSource,
                 _roundsSettings,
-                _backTransform);
+                _background);
 
             _roundsController.Start();
         }

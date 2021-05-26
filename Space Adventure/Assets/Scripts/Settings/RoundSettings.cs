@@ -10,5 +10,6 @@ namespace Asteroids
         public AudioClip BackgroundMusic;
         public EnemyCountSettings[] Enemies;
         public BossType Boss;
+        public Sprite Background;
     }
 }

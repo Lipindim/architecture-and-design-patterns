@@ -16,7 +16,7 @@ namespace Asteroids
             SoundSettings soundSettings,
             AudioSource backgroundAudioSource,
             RoundSettings[] roundsSettings,
-            Transform backTransform)
+            GameObject background)
         {
             var poolServices = new PoolServices();
             var playerFactory = new PlayerShipFactory(playerSettings, shotSettings, poolServices);
@@ -44,8 +44,9 @@ namespace Asteroids
             var soundPlayer = new PlayerAudioPlayer(playerShip, soundSettings, audioSource);
             var playerCollisionController = new PlayerCollisionController(playerShip, enemyBulletCache, enemyCache);
             var backroundMusicController = new BackgroundMusicController(backgroundAudioSource);
-            var roundsController = new RoundsController(roundsSettings, backroundMusicController, enemySpawnController);
-            var backMover = new BackgroundMover(backTransform);
+            var backMover = new BackgroundMover(background, screen);
+            var roundsController = new RoundsController(roundsSettings, backroundMusicController, enemySpawnController, backMover);
+            
 
             List<IUpdateble> updatebles = new List<IUpdateble>();
             updatebles.Add(moveController);

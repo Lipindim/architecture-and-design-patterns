@@ -4,17 +4,19 @@ namespace Asteroids
 {
     public class RoundsController
     {
+        private readonly BackgroundMover _backgroundMover;
         private readonly BackgroundMusicController _backgroundMusicController;
         private readonly EnemySpawnController _enemySpawnController;
         private readonly RoundSettings[] _roundsSettings;
 
         private int _currentRound;
 
-        public RoundsController(RoundSettings[] roundsSettings, BackgroundMusicController backgroundMusicController, EnemySpawnController enemySpawnController)
+        public RoundsController(RoundSettings[] roundsSettings, BackgroundMusicController backgroundMusicController, EnemySpawnController enemySpawnController, BackgroundMover backgroundMover)
         {
             _backgroundMusicController = backgroundMusicController;
             _enemySpawnController = enemySpawnController;
             _roundsSettings = roundsSettings;
+            _backgroundMover = backgroundMover;
 
             _enemySpawnController.OnSpawnCompleted += EnemySpawnControllerOnSpawnCompleted;
         }
@@ -38,6 +40,7 @@ namespace Asteroids
             _enemySpawnController.SetSpawnEnemies(roundSettings.Enemies, roundSettings.Duration);
             _backgroundMusicController.StopMusic();
             _backgroundMusicController.StartMusic(roundSettings.BackgroundMusic);
+            _backgroundMover.SetBackgroundImage(roundSettings.Background, roundSettings.Duration);
         }
 
         ~RoundsController()

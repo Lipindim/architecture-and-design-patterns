@@ -7,5 +7,6 @@ namespace Asteroids
     {
         bool IsPositionOutOfScreen(Vector3 position);
         Vector3 WorldToScreenPoint(Vector3 position);
+        float GetPixelHeight();
     }
 }
