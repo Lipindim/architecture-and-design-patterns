@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Asteroids
 {
-    public class GameController : MonoBehaviour
+    public class Main : MonoBehaviour
     {
 
         [SerializeField] private PlayerSettings _playerSettings;
@@ -17,6 +17,7 @@ namespace Asteroids
         [SerializeField] private AudioSource _backgroundAudioSource;
         [SerializeField] private RoundSettings[] _roundsSettings;
         [SerializeField] private GameObject _background;
+        [SerializeField] private HealthView _healthView;
 
         private IEnumerable<IUpdateble> _updatebles;
         private RoundsController _roundsController;
@@ -32,7 +33,8 @@ namespace Asteroids
                 _soundSettings,
                 _backgroundAudioSource,
                 _roundsSettings,
-                _background);
+                _background,
+                _healthView);
 
             _roundsController.Start();
         }

@@ -12,6 +12,17 @@ namespace Asteroids
         private readonly IRotation _rotationImplementation;
 
         public event Action<Unit> OnCollision;
+        public event Action<IHealthing> OnGetDamage
+        {
+            add
+            {
+                _healthingImplementation.OnGetDamage += value;
+            }
+            remove
+            {
+                _healthingImplementation.OnGetDamage -= value;
+            }
+        }
 
         public event Action OnShot
         {
@@ -42,6 +53,8 @@ namespace Asteroids
         public float Health => _healthingImplementation.Health;
 
         public Vector3 CurrentPosition => _moveImplementation.CurrentPosition;
+
+        public float MaxHealth => _healthingImplementation.MaxHealth;
 
         public Ship(IMove moveImplementation, 
             IRotation rotationImplementation,

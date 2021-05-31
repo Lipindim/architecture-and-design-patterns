@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: FighterShotSettings
   m_EditorClassIdentifier: 
   Force: 800
-  ReloadTimeSec: 1
+  ReloadTimeSec: 2
   Bullet: {fileID: 5317670770042279809, guid: 01e649e8e64e0e649b64625196588355, type: 3}
   Barrel: {fileID: 6566654108363645378, guid: 7fab76834adabc444bb22aa7f42c182a, type: 3}
   BarrelPositon: {x: 0.4, y: 0}
+  Damage: 1

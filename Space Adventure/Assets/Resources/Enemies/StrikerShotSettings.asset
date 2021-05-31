@@ -17,3 +17,4 @@ MonoBehaviour:
   Bullet: {fileID: 2241424321630036463, guid: 8bcebc7057b279f4da1e2829f043a9a4, type: 3}
   Barrel: {fileID: 6566654108363645378, guid: 7fab76834adabc444bb22aa7f42c182a, type: 3}
   BarrelPositon: {x: 1.2, y: 0}
+  Damage: 3

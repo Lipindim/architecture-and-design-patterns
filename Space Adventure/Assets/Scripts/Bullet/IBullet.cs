@@ -1,11 +1,8 @@
-﻿using UnityEngine;
-
-
-namespace Asteroids
+﻿namespace Asteroids
 {
     public interface IBullet
     {
         AttackType AttackType { get; }
-        int Damage { get; }
+        float Damage { get; }
     }
 }

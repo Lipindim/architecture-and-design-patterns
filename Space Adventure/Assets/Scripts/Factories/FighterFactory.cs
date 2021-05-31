@@ -24,7 +24,7 @@ namespace Asteroids
 
             var barrel = GameObject.Instantiate(_fighterSettings.ShotSettings.Barrel, fighterObject.transform);
             barrel.transform.localPosition = new Vector3(_fighterSettings.ShotSettings.BarrelPositon.x, _fighterSettings.ShotSettings.BarrelPositon.y);
-            ShipShoting shipShoting = new ShipShoting(_fighterSettings.ShotSettings.Bullet, barrel.transform, _fighterSettings.ShotSettings.Force, _poolServices, AttackType.Paralysis, 2);
+            ShipShoting shipShoting = new ShipShoting(_fighterSettings.ShotSettings.Bullet, barrel.transform, _fighterSettings.ShotSettings.Force, _poolServices, AttackType.Damage, _fighterSettings.ShotSettings.Damage);
             ShipShotingWithReload shipShotingWithReload = new ShipShotingWithReload(shipShoting, _fighterSettings.ShotSettings.ReloadTimeSec);
             var healthing = new UnitHealth(_fighterSettings.Health);
 

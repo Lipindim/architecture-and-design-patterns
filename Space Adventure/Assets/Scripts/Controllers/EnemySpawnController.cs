@@ -59,11 +59,6 @@ namespace Asteroids
                         var enemy = enemySpawner.SpawnEnemyInRandomPosition();
                         _enemyCache.AddUnit(enemy);
                         _enemies[enemyType]--;
-
-                        foreach (var en in _enemies)
-                        {
-                            UnityEngine.Debug.Log($"{en.Key}:{en.Value}");
-                        }
                     }
                 }
             }

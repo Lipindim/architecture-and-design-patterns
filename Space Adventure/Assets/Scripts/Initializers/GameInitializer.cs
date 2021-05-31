@@ -16,7 +16,8 @@ namespace Asteroids
             SoundSettings soundSettings,
             AudioSource backgroundAudioSource,
             RoundSettings[] roundsSettings,
-            GameObject background)
+            GameObject background,
+            HealthView healthView)
         {
             var poolServices = new PoolServices();
             var playerFactory = new PlayerShipFactory(playerSettings, shotSettings, poolServices);
@@ -46,6 +47,7 @@ namespace Asteroids
             var backroundMusicController = new BackgroundMusicController(backgroundAudioSource);
             var backMover = new BackgroundMover(background, screen);
             var roundsController = new RoundsController(roundsSettings, backroundMusicController, enemySpawnController, backMover);
+            var playerHealthController = new PlayerHealthController(playerShip, healthView);
             
 
             List<IUpdateble> updatebles = new List<IUpdateble>();
